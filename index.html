@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roast My Playlist</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+    <h1>RoastMyPlaylist</h1>
+    <p>Enter your songs. Get destroyed</p>
+</header>
+
+<!-- Main form -->
+<main class="main">
+
+    <!-- Song Inputs-->
+    <section class="input-selection">
+     <h2>Your Playlist</h2>
+     <div class="song-inputs" id="songInputs">
+        <input type="text" placeholder="Song 1 (e.g. Blinding Lights - The Weeknd)" class="song-input">
+        <input type="text" placeholder="Song 2" class="song-input">
+        <input type="text" placeholder="Song 3" class="song-input">
+        <input type="text" placeholder="Song 4" class="song-input">
+        <input type="text" placeholder="Song 5 (optional)" class="song-input">
+     </div>
+    </section>
+
+    <!-- Roaster Mode Selector -->
+     <section class="mode-selection">
+        <h2>Choose your Roaster</h2>
+        <div class="mode-button">
+            <button class="mode-btn active" data-mode="gordon">👨‍🍳 Gordon Ramsay</button>
+            <button class="mode-btn" data-mode="genz">💅 Gen Z Bestie</button>
+            <button class="mode-btn" data-mode="snob">🎩 Music Snob</button>
+            <button class="mode-btn" data-mode="uhinged">🤖 Unhinged AI</button>
+        </div>
+     </section>
+
+
+<!-- Submit Button -->
+<button class="roast-btn" id="roastbtn" onclick="getRoast()">
+    🔥 ROAST MY PLAYLIST
+</button>
+
+<!-- Error Message -->
+<p class="error-msg hidden" id="errormsg">
+    Add at least one song first 💀
+</p>
+
+<!-- Output Area -->
+ <section class="output-section hidden" id="outputsection">
+    <div class="roast-card" id="roastcard">
+        <div class="roaster-name" id="roastername"></div>
+        <div class="roast-text" id="roastText"></div>
+    </div>
+    <div class="share-buttons">
+        <button onclick="sharetotwitter()">🐦 Tweet This Roast</button>
+        <button onclick="downloadcard()">📷 Save as Image</button>
+        <button onclick="roastAgain()">🔄 Roast Again</button>
+    </div>
+ </section>
+
+ <!-- Loading State-->
+ <div class="loading hidden" id="loading">
+    <p>Roasting your Taste... 🔥</p>
+ </div>
+
+</main>
+
+<!-- html2canvas-->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+ <script src="script.js"></script>
+</body>
+</html>
