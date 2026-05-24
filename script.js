@@ -68,7 +68,7 @@ async function getRoast() {
 
     try { 
         const songList = songs.map((s, i) => `${i + 1}. ${s}`).join('\n');
-        const response = await fetch('/API/roast', {
+        const response = await fetch('/api/roast', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' },
