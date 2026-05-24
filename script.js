@@ -94,7 +94,6 @@ async function getRoast() {
     }
 }
 
-const API_KEY = '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'
 
 const ROASTER_PROMPTS = {
     gordon: "You are Gordon Ramsay but you have just seen someone's playlist instead of food. React like it's the worst thing you've ever encountered in your entire career. use cooking metaphors brutally. Mention specific songs they listed and destroy each one. Be theatrical, explosive, and devastating .do not hold back. end with one final killer line. under 120 words.",
