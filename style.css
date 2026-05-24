@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'bebas neue',sans-serif;
+    background: #0a0a0a;
+    color: #f0f0f0;
+    min-height: 100vh;
+}
+
+.header {
+    text-align: center;
+    padding: 40px 20px 24px;
+}
+
+.header h1 {
+    font-size: clamp(48px , 10vw, 96px);
+    color:#ff3d3d;
+    letter-spacing: 0.04em;
+    line-height: 1;
+
+}
+
+.header p {
+    font-family: 'DM mono', monospace;
+    font-size: 14px;
+    color: #555;
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.input-selection h2 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+
+.song-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding:10px;
+    text-align: center;
+}
+
+.song-input { 
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 14px 16px;
+    color: #f0f0f0;
+    font-family: 'DM mono', monospace;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.song-input:focus {
+  border-color: #ff3d3d;
+}
+
+.song-input::placeholder {
+    color: #333;
+}
+
+/*ROASTER MODE BUTTONS*/
+.mode-selection h2 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+
+.mode-button {
+    padding: 10px;
+    font-family: 'DM mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.mode-btn {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 14px;
+    color: #555;
+    font-family: 'DM mono', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    box-shadow: 0 0 60px transparent;
+}
+
+.mode-btn[data-mode="gordon"]:hover,
+.mode-btn[data-mode="gordon"].active {
+    border-color: #ff6b00;
+    color: #ff6b00;
+    background: #1a0d00;
+    box-shadow: 0 0 60px #713205;
+}
+
+.mode-btn[data-mode="genz"]:hover,
+.mode-btn[data-mode="genz"].active {
+    border-color: #ff69b4;
+    color: #ff69b4;
+    background: #1a0011;
+    box-shadow: 0 0 60px #760a40;
+}
+
+.mode-btn[data-mode="snob"]:hover,
+.mode-btn[data-mode="snob"].active {
+    border-color: #c9a84c;
+    color: #c9a84c;
+    background: #12100a;
+    box-shadow: 0 0 60px #7b5c06;
+}
+
+.mode-btn[data-mode="unhinged"]:hover,
+.mode-btn[data-mode="unhinged"].active {
+    border-color: #00ff88;
+    color: #00ff88;
+    background: #001a0d;
+    box-shadow: 0 0 60px #0f6f42;
+}
+
+/*ROAST BUTTON*/
+.roast-btn {
+    width: 100%;
+    background: #ff3d3d;
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 18px;
+    font-family: 'bebas neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 0 40px #ff3d3d44;
+}
+
+.roast-btn:hover {
+    background: #940000;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 0 60px #ff3d3d88;
+}
+
+.roast-btn:active {
+    transform: translateY(1px);
+}
+
+/*OUTPUT CARD*/
+.roast-card {
+    background: #111;
+    border: 1px solid #222;
+    border-left: 3px solid #ff3d3d;
+    padding: 24px;
+    border-radius: 8px;
+    margin-top: 32px;
+}
+
+.Roaster-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #ff3d3d;
+    margin-bottom: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.roast-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.8;
+}
+
+/* SHARE BUTTON */
+.share-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.share-buttons button {
+    background: #111;
+    border: 1px solid #222;
+    color: #888;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.share-buttons button:hover {
+    border-color: #ff3d3d;
+    color: #fff;
+    background: #1a1a1a
+}
+
+.loading {
+    text-align: center;
+    margin-top: 40px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: #ff3d3d;
+    letter-spacing: 0.1em;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* HIDDEN UTILITY */
+.hidden {
+    display: none;
+}
+
+/* error */
+.error-msg {
+    color: #ff3d3d;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .mode-button {
+        grid-template-columns: 1fr;
+    }
+}
