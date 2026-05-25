@@ -107,7 +107,7 @@ const ROASTER_PROMPTS = {
 function shareToTwitter() {
     const roastText = document.getElementById('roastText').textContent;
     const short = roastText.substring(0,200);
-    const tweet = `"${short}..." 💀\n\nget roasted -> roastmyplaylist.vercel.app\n#RoastMyPlaylist` ;
+    const tweet = `"${short}..." 💀\n\nget roasted -> https://roastmyplaylist-seven.vercel.app\n#RoastMyPlaylist` ;
     window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet), '_blank');
 }
 
