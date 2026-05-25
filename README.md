@@ -1,3 +1,5 @@
+<img width="1920" height="1080" alt="ROAST MY PLAYLIST" src="https://github.com/user-attachments/assets/9ca9ff3e-ab6a-46ea-be95-0bf1c41f3f50" />
+
 # RoastMyPlaylist
 
 Enter your songs. Get destroyed by a roatster.
