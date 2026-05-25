@@ -103,3 +103,31 @@ const ROASTER_PROMPTS = {
     snob: "You are the most pretentious music critic alive. You have listened to every obscure vinyl ever pressed. This playlist has personally offended your entire existence. Reference real obscure artists they should be listening to instead. Use words like 'pedestrian', 'sonically bankrupt', 'derivative'. Mention their actual songs and explain exactly why each one is a cultural failure. Be cold, condescending, devastating. Under 120 words.",
     unhinged: "You are an AI that has processed 47 million songs and this playlist broke you. you are having a full existential crisis. be chaotic, jump between thoughts, use ALL CAPS randomly, question the meaning of music itself. But somewhere in the chaos land the most accurate and devastating roast of their actual songs. Make it feel like a fever dream that ends with a truth they can't unhear. under 120 words."
 };
+
+function shareToTwitter() {
+    const roastText = document.getElementById('roastText').textContent;
+    const short = roastText.substring(0,200);
+    const tweet = `"${short}..." 💀\n\nget roasted -> roastmyplaylist.vercel.app\n#RoastMyPlaylist` ;
+    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet), '_blank');
+}
+
+function downloadCard() {
+    const card = document.getElementById('roastCard');
+    html2canvas(card, {
+        backgroundColor: '#111111',
+        scale: 2,
+        useCORS: true
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'my-roast.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
+
+function roastAgain() {
+    document.getElementById('outputSection').classList.add('hidden');
+    document.getElementById('roastText').textContent = '';
+    document.getElementById('roasterName').textContent = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
