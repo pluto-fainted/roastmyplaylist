@@ -80,6 +80,7 @@ async function getRoast() {
 
         const data = await response.json();
         const roastText = data.roast;
+        console.log('roast text:', roastText);
 
         document.getElementById('roasterName').textContent = roasterNames[selectedMode];
         document.getElementById('roastText').textContent = roastText;
