@@ -79,6 +79,7 @@ async function getRoast() {
             });
 
         const data = await response.json();
+        console.log('full data:', JSON.stringify(data));
         const roastText = data.roast;
         console.log('roast text:', roastText);
 
