@@ -73,7 +73,7 @@ async function getRoast() {
             headers: {
                 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              songList: songs.map((s, i) => `${i + 1}. ${s}`).join('/n'),
+              songList: songs.map((s, i) => `${i + 1}. ${s}`).join('\n'),
               systemPrompt: ROASTER_PROMPTS[selectedMode]
                 })
             });
