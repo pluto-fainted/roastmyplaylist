@@ -18,7 +18,7 @@ You type in your tops songs, pick a character personality you wanna get destroye
 ## Built With
 
 - HTML / CSS / Vanilla JS
-- Claude API (for the actual roasting)
+- Groq API / LLaMA 3.3 (for the actual roasting)
 - html2canvas (sharable image cards)
 - Vercel (deployment)
 
