@@ -1,79 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roast My Playlist</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono&display=swap" rel="stylesheet">
-</head>
-<body>
 
-<!-- Header -->
-<header class="header">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roast My Playlist</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
     <h1>RoastMyPlaylist</h1>
     <p>Enter your songs. Get destroyed</p>
-</header>
+  </header>
 
-<!-- Main form -->
-<main class="main">
-
+  <!-- Main form -->
+  <main class="main">
     <!-- Song Inputs-->
     <section class="input-selection">
-     <h2>Your Playlist</h2>
-     <div class="song-inputs" id="songInputs">
-        <input type="text" placeholder="Song 1 (e.g. Blinding Lights - The Weeknd)" class="song-input">
-        <input type="text" placeholder="Song 2" class="song-input">
-        <input type="text" placeholder="Song 3" class="song-input">
-        <input type="text" placeholder="Song 4" class="song-input">
-        <input type="text" placeholder="Song 5 (optional)" class="song-input">
-     </div>
+      <h2>Your Playlist</h2>
+      <div class="song-inputs" id="songInputs">
+        <input type="text" placeholder="Song 1 (e.g. Blinding Lights - The Weeknd)" class="song-input" />
+        <input type="text" placeholder="Song 2" class="song-input" />
+        <input type="text" placeholder="Song 3" class="song-input" />
+        <input type="text" placeholder="Song 4" class="song-input" />
+        <input type="text" placeholder="Song 5 (optional)" class="song-input" />
+      </div>
     </section>
 
     <!-- Roaster Mode Selector -->
-     <section class="mode-selection">
-        <h2>Choose your Roaster</h2>
-        <div class="mode-button">
-            <button class="mode-btn active" data-mode="gordon">👨‍🍳 Gordon Ramsay</button>
-            <button class="mode-btn" data-mode="genz">💅 Gen Z Bestie</button>
-            <button class="mode-btn" data-mode="snob">🎩 Music Snob</button>
-            <button class="mode-btn" data-mode="unhinged">🤖 Unhinged AI</button>
-        </div>
-     </section>
+    <section class="mode-selection">
+      <h2>Choose your Roaster</h2>
+      <div class="mode-button">
+        <button class="mode-btn active" data-mode="gordon">
+          👨‍🍳 Gordon Ramsay
+        </button>
+        <button class="mode-btn" data-mode="genz">💅 Gen Z Bestie</button>
+        <button class="mode-btn" data-mode="snob">🎩 Music Snob</button>
+        <button class="mode-btn" data-mode="unhinged">🤖 Unhinged AI</button>
+      </div>
+    </section>
 
+    <!-- Submit Button -->
+    <button class="roast-btn" id="roastBtn" onclick="getRoast()">
+      🔥 ROAST MY PLAYLIST
+    </button>
 
-<!-- Submit Button -->
-<button class="roast-btn" id="roastBtn" onclick="getRoast()">
-    🔥 ROAST MY PLAYLIST
-</button>
+    <!-- Error Message -->
+    <p class="error-msg hidden" id="errorMsg">
+      Add at least one song first 💀
+    </p>
 
-<!-- Error Message -->
-<p class="error-msg hidden" id="errorMsg">
-    Add at least one song first 💀
-</p>
+    <div class="loading hidden" id="loading">
+      <p>Roasting your Taste... 🔥</p>
+    </div>
 
-<!-- Output Area -->
- <section class="output-section hidden" id="outputSection">
-    <div class="roast-card" id="roastCard">
+    <!-- Output Area -->
+    <section class="output-section hidden" id="outputSection">
+      <div class="roast-card" id="roastCard">
         <div class="roaster-name" id="roasterName"></div>
         <div class="roast-text" id="roastText"></div>
-    </div>
-    <div class="share-buttons">
+      </div>
+      <div class="share-buttons">
         <button onclick="shareToTwitter()">🐦 Tweet This Roast</button>
         <button onclick="downloadCard()">📷 Save as Image</button>
         <button onclick="roastAgain()">🔄 Roast Again</button>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="shareCard" style="display: none; position: fixed; top: -9999px; left: -9999px">
+    <div id="shareCardInner" style="
+          width: 400px;
+          height: 700px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 40px 30px;
+          font-family: DM Mono, monospace;
+          overflow: hidden;
+        ">
+      <div id="cardBg" style="position: absolute; inset: 0; z-index: 0"></div>
+
+      <div style="
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+          "></div>
+
+      <div style="
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            padding: 32px 28px;
+          ">
+        <div id="cardRoasterName" style="
+              font-size: 13px;
+              font-weight: 700;
+              letter-spacing: 0.15em;
+              text-transform: uppercase;
+              color: rgba(255, 255, 255, 0.6);
+              margin-bottom: 20px;
+            "></div>
+
+        <div id="cardRoastText" style="
+              font-size: 15px;
+              line-height: 1.75;
+              color: #ffffff;
+              margin-bottom: 24px;
+            "></div>
+
+        <div style="
+              height: 1px;
+              background: rgba(255, 255, 255, 0.1);
+              margin-bottom: 16px;
+            "></div>
+
+        <div id="cardSongList" style="
+              font-size: 11px;
+              color: rgba(255, 255, 255, 0.4);
+              letter-spacing: 0.06em;
+              line-height: 1.8;
+            "></div>
+      </div>
+
+      <div style="
+            position: relative;
+            z-index: 2;
+            margin-top: 20px;
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+          ">
+      </div>
     </div>
- </section>
+  </div>
 
- <!-- Loading State-->
- <div class="loading hidden" id="loading">
-    <p>Roasting your Taste... 🔥</p>
- </div>
-
-</main>
-
-<!-- html2canvas-->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
- <script src="script.js"></script>
+      <!-- html2canvas-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+      <script src="script.js"></script>
+      roastmyplaylist-seven.vercel.app
 </body>
+
 </html>

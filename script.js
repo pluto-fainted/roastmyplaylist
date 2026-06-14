@@ -7,7 +7,6 @@ document.querySelectorAll('.mode-btn').forEach(btn => {
         });
         btn.classList.add('active');
         selectedMode = btn.dataset.mode;
-        console.log('selected mode:', selectedMode);
         });
         });
 
@@ -67,7 +66,6 @@ async function getRoast() {
     document.getElementById('roastBtn').disabled = true;
 
     try { 
-        const songList = songs.map((s, i) => `${i + 1}. ${s}`).join('\n');
         const response = await fetch('/api/roast', {
             method: 'POST',
             headers: {
@@ -79,9 +77,7 @@ async function getRoast() {
             });
 
         const data = await response.json();
-        console.log('full data:', JSON.stringify(data));
         const roastText = data.roast;
-        console.log('roast text:', roastText);
 
         document.getElementById('roasterName').textContent = roasterNames[selectedMode];
         document.getElementById('roastText').textContent = roastText;
@@ -111,18 +107,41 @@ function shareToTwitter() {
     window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweet), '_blank');
 }
 
+const cardBackgrounds = {
+    gordon: 'linear-gradient(135deg, #1a0000 0%, #8b0000 40%, #ff4500 100%)',
+    genz: 'linear-gradient(135deg, #0d0021 0%, #6b00b6 40%, #ff00c8 100%)',
+    snob: 'linear-gradient(135deg, #000d1a 0%, #003366 40%, #0099cc 100%)',
+    unhinged: 'linear-gradient(135deg, #001a00 0%, #006600 40%, #00ff88 100%)'
+};
+
 function downloadCard() {
-    const card = document.getElementById('roastCard');
-    html2canvas(card, {
-        backgroundColor: '#111111',
-        scale: 2,
-        useCORS: true
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'my-roast.png';
-        link.href = canvas.toDataURL();
-        link.click();
-    });
+  const roastText = document.getElementById('roastText').textContent;
+  const roasterName = document.getElementById('roasterName').textContent;
+  const songs = getSongs();
+
+  document.getElementById('cardRoasterName').textContent = roasterName;
+  document.getElementById('cardRoastText').textContent = roastText;
+  document.getElementById('cardSongList').textContent = songs.join(' · ');
+  document.getElementById('cardBg').style.background = cardBackgrounds[selectedMode];
+
+  const shareCard = document.getElementById('shareCard');
+  shareCard.style.display = 'block';
+
+  const inner = document.getElementById('shareCardInner');
+
+  html2canvas(inner, {
+    backgroundColor: null,
+    scale: 2,
+    useCORS: true,
+    width: 400,
+    height: 700
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'roast-card.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    shareCard.style.display = 'none';
+  });
 }
 
 function roastAgain() {
